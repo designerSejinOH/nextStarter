@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import MenuModal from './MenuModal'
 import { AnimatePresence } from 'framer-motion'
 
-const Header = ({ title }: { title: string }) => {
+const Header = ({ title, height }: { title: string; height: number }) => {
   const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false)
   const [scrollPosition, setScrollPosition] = useState(0)
@@ -17,7 +17,7 @@ const Header = ({ title }: { title: string }) => {
 
   return (
     <>
-      <S.Header scrollPosition={scrollPosition}>
+      <S.Header h={height} scrollPosition={scrollPosition}>
         <S.HeaderLogo
           onClick={() => {
             //if present page is index.tsx, do nothing

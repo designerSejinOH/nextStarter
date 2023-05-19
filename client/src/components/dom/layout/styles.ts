@@ -3,9 +3,10 @@ import tw from 'twin.macro'
 import { MotionModal } from '@/styles/common.styles'
 
 export const Header = styled.div<{
-  height: number
+  h: number
   scrollPosition: number
 }>`
+  height: ${({ h }) => h}px;
   ${tw`
   fixed
   top-0
@@ -21,9 +22,8 @@ export const Header = styled.div<{
     text-center 
     z-40
     `}
-  ${({ scrollPosition }) =>
-    scrollPosition < 20 ? tw`bg-transparent` : tw` bg-gradient-to-b from-gray-500 to-transparent`}
-  ${({ height }) => height: height} }
+  ${({ scrollPosition, h }) =>
+    scrollPosition < h ? tw`bg-transparent` : tw` bg-gradient-to-b from-gray-500 to-transparent`}
 `
 
 export const HeaderLogo = styled.div`
