@@ -16,17 +16,17 @@ export default function MenuModal({ onHandleMenu }: MenuModalProps) {
   return (
     <S.MenuModal>
       <S.MenuModalContent>
-        <S.MenuModalItem onClick={onClickEvent('about')}>
-          <span>ABOUT</span>
-          <S.MenuModalItemHidden> | CV & RESUME</S.MenuModalItemHidden>
+        <S.MenuModalItem onClick={onClickEvent('#')}>
+          <span>First</span>
+          <S.MenuModalItemHidden> | SubTitle</S.MenuModalItemHidden>
         </S.MenuModalItem>
-        <S.MenuModalItem onClick={onClickEvent('works')}>
-          <span>WORKS</span>
-          <S.MenuModalItemHidden> | DESIGN & DEVELOP & ART </S.MenuModalItemHidden>
+        <S.MenuModalItem onClick={onClickEvent('#')}>
+          <span>Second</span>
+          <S.MenuModalItemHidden> | SubTitle </S.MenuModalItemHidden>
         </S.MenuModalItem>
-        <S.MenuModalItem onClick={onClickEvent('contact')}>
-          <span>CONTACT</span>
-          <S.MenuModalItemHidden> | E-MAIL & INSTAGRAM</S.MenuModalItemHidden>
+        <S.MenuModalItem onClick={onClickEvent('#')}>
+          <span>Third</span>
+          <S.MenuModalItemHidden> | SubTitle</S.MenuModalItemHidden>
         </S.MenuModalItem>
       </S.MenuModalContent>
     </S.MenuModal>
