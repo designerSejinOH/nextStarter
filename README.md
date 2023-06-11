@@ -6,7 +6,7 @@ installation with git cli
  gh repo clone designerSejinOH/nextStarter
 ```
 
-Start
+start
 ```
  cd client
  yarn
