@@ -3,7 +3,7 @@ Next Starter Pack - NEXT + TS + Tailwind.CSS + StyledComponents
 
 installation with git cli
 ```cli
- gh repo clone designerSejinOH/nextStarter
+ gh repo clone designerSejinOH/nextStarter/client
 ```
 
 start
