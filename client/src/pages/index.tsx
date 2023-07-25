@@ -15,20 +15,19 @@ export default function Page(props) {
               onClick={() => {
                 setPage('home')
               }}>
-              <p className='text-xs'>Hongik univ. Interactive media art crew</p>
               {props.title}
             </button>
             <div className='flex flex-row gap-4'>
               <button
                 onClick={() => {
-                  window.open('https://www.instagram.com/opensource_lab/')
+                  window.open('https://www.instagram.com/ohsj1999/')
                 }}
                 className='text-3xl hover:text-gray-400 '>
                 <AiOutlineInstagram />
               </button>
               <button
                 onClick={() => {
-                  window.location.href = 'mailto:hi.oslab@gmail.com'
+                  window.location.href = 'mailto:ohsj1999@gmail.com'
                 }}
                 className='text-3xl hover:text-gray-400 '>
                 <AiOutlineMail />
@@ -83,5 +82,5 @@ export default function Page(props) {
 }
 
 export async function getStaticProps() {
-  return { props: { title: 'Open Source Lab' } }
+  return { props: { title: 'NEXT TWIN STARTER by SEJIN OH' } }
 }
