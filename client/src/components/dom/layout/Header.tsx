@@ -1,26 +1,23 @@
 import * as S from './styles'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
-import MenuModal from './MenuModal'
 import { AnimatePresence } from 'framer-motion'
+import { CiMenuBurger, CiCircleRemove } from 'react-icons/ci'
 
-const Header = ({ title, height }: { title: string; height: number }) => {
+interface HeaderProps {
+  title: string
+}
+
+export function Header(props: HeaderProps) {
+  const { title } = props
   const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false)
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const updateScroll = () => {
-    setScrollPosition(window.scrollY || document.documentElement.scrollTop)
-  }
-  useEffect(() => {
-    window.addEventListener('scroll', updateScroll)
-  }, [])
 
   return (
     <>
-      <S.Header h={height} scrollPosition={scrollPosition}>
+      <S.Header>
         <S.HeaderLogo
           onClick={() => {
-            //if present page is index.tsx, do nothing
             router.pathname === '/' ? router.reload() : router.push('/')
           }}>
           {title}
@@ -30,25 +27,7 @@ const Header = ({ title, height }: { title: string; height: number }) => {
             onClick={() => {
               setIsMenuOpen(!isMenuOpen)
             }}>
-            {!isMenuOpen ? (
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                className='w-10 h-10'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 6h16M4 12h16M4 18h16' />
-              </svg>
-            ) : (
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                className='w-10 h-10'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
-              </svg>
-            )}
+            {!isMenuOpen ? <CiMenuBurger /> : <CiCircleRemove />}
           </div>
         </S.MenuButton>
       </S.Header>
@@ -65,4 +44,34 @@ const Header = ({ title, height }: { title: string; height: number }) => {
   )
 }
 
-export default Header
+interface MenuModalProps {
+  onHandleMenu: (isMenuOpen: boolean) => void
+}
+
+export function MenuModal(props: MenuModalProps) {
+  const { onHandleMenu } = props
+  const router = useRouter()
+  const onClickEvent = (path: string) => () => {
+    router.push(`/${path}`)
+    onHandleMenu(false)
+  }
+
+  return (
+    <S.MenuModal>
+      <S.MenuModalContent>
+        <S.MenuModalItem onClick={onClickEvent('#')}>
+          <span>submenu-1</span>
+          <S.MenuModalItemHidden>description </S.MenuModalItemHidden>
+        </S.MenuModalItem>
+        <S.MenuModalItem onClick={onClickEvent('#')}>
+          <span>submenu-2</span>
+          <S.MenuModalItemHidden>description </S.MenuModalItemHidden>
+        </S.MenuModalItem>
+        <S.MenuModalItem onClick={onClickEvent('#')}>
+          <span>submenu-3</span>
+          <S.MenuModalItemHidden>description</S.MenuModalItemHidden>
+        </S.MenuModalItem>
+      </S.MenuModalContent>
+    </S.MenuModal>
+  )
+}

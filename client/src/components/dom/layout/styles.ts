@@ -2,52 +2,41 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 import { MotionModal } from '@/styles/common.styles'
 
-export const Header = styled.div<{
-  height: number
-  scrollPosition: number
-}>`
+export const Header = styled.div`
   ${tw`
-  fixed
-  top-0
+    fixed
+    top-0
     w-full
-    h-20
-    bg-white
+    h-12
     flex
     flex-row
     justify-between
     items-center
-    text-black
-    text-3xl
-    font-bold
+    text-2xl
     text-center 
     z-40
-    border-b
-    border-black
-    `}
-  ${({ scrollPosition }) => (scrollPosition < 20 ? tw`mix-blend-normal` : tw` mix-blend-difference`)}
+  `}
 `
 
-export const HeaderLogo = styled.div`
+export const HeaderLogo = styled.button`
   ${tw`
   flex 
   items-center
   pt-1
   h-full
   px-4
-  cursor-pointer
   w-fit 
   active:opacity-50
   md:hover:opacity-50
   `}
 `
 
-export const MenuButton = styled.div`
+export const MenuButton = styled.button`
   ${tw`
   flex 
   items-center 
   h-full 
   px-4 
-  cursor-pointer 
   w-fit
   active:opacity-50
   md:hover:opacity-50
@@ -55,15 +44,14 @@ export const MenuButton = styled.div`
 `
 export const MenuModal = styled(MotionModal)`
   ${tw`
-fixed
+  fixed
   z-30 
   w-full 
   h-full 
   flex
   justify-center
   items-center
-  bg-white 
-  text-black
+  backdrop-blur-md
   py-20
   px-10
   `}
@@ -75,26 +63,23 @@ export const MenuModalContent = styled.div`
   flex-col
   w-fit
   h-full
-  gap-4
+  gap-2
+  md:gap-6
   justify-center
   items-center
   md:items-start
+    cursor-pointer
   `}
 `
 export const MenuModalItem = styled.div`
   ${tw`
   flex
-  flex-row
-  justify-start
-  items-center
+  flex-col
+  justify-center
+  items-start
   w-full
-  px-8
-  pt-2
-  h-20
-  text-4xl
-  font-[hel-bd]
-  cursor-pointer
-  rounded-full
+  h-fit
+  text-2xl
   active:opacity-50
   md:hover:opacity-50
   `}
@@ -102,8 +87,8 @@ export const MenuModalItem = styled.div`
 export const MenuModalItemHidden = styled.p`
   ${tw`
   whitespace-pre
-  font-[hel-th]
   hidden
   md:flex
+  text-lg
   `}
 `
